@@ -20,6 +20,9 @@ class FirstPythonTest(unittest.TestCase):
         self.driver.quit()
 
     def testScanCodeRenew(self):
+        """
+            Verify update QR Code timing
+        """
         self.driver.get("https://web.whatsapp.com/")
 
         qrcode_locator = (By.XPATH, "//div[@data-testid='qrcode']")
@@ -36,6 +39,9 @@ class FirstPythonTest(unittest.TestCase):
             old_code = new_code
 
     def testHovers(self):
+        """
+            Verify Mouse Hover Capability
+        """
         self.driver.get("http://the-internet.herokuapp.com/hovers")
 
         avatar = self.driver.find_element(By.CLASS_NAME, 'figure')
