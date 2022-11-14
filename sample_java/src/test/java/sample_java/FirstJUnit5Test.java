@@ -14,6 +14,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.function.Supplier;
+
 public class FirstJUnit5Test {
 
 	WebDriver driver;
@@ -24,7 +26,8 @@ public class FirstJUnit5Test {
 
 		System.out.println("#### Before");
 
-		System.setProperty("webdriver.chrome.driver", "<FILL_WITH_CORRECT_PATH>\\chromedriver.exe");
+		// chromedriver.exe must be in %PATH%
+		//System.setProperty("webdriver.chrome.driver", "<FILL_WITH_CORRECT_PATH>\\chromedriver.exe");
 
 		driver = new ChromeDriver();
 		js = (JavascriptExecutor) driver;
@@ -36,10 +39,39 @@ public class FirstJUnit5Test {
 		System.out.println("#### After");
 
 		driver.quit();
+		
+		driver = null;
+		js = null;
 	}
 
 	@Test
-	void test() throws InterruptedException {
+	public void testScanCodeRenew() throws InterruptedException {
+		
+		driver.get("https://web.whatsapp.com/");
+		
+		By xpath = By.xpath("//div[@data-testid='qrcode']");
+		WebElement scanCode = new WebDriverWait(driver, 10)
+			.until(ExpectedConditions.presenceOfElementLocated(xpath));
+		
+		Supplier<String> getScanCode = 
+			   () -> {
+				   String ans = scanCode.getAttribute("data-ref");
+				   System.out.println("Current QR -> " + ans);
+				   return ans;
+			   };
+		
+		String oldCode = getScanCode.get();
+				
+		for(int index = 0 ; index < 3 ; index++) {
+			Thread.sleep(60_000);
+			String newCode = getScanCode.get();	
+			assertNotEquals(oldCode, newCode);
+			oldCode = newCode;
+		}
+	}
+
+	@Test
+	public void testHovers() throws InterruptedException {
 		driver.get("http://the-internet.herokuapp.com/hovers");
 
 		WebElement avatar = driver.findElement(By.className("figure"));

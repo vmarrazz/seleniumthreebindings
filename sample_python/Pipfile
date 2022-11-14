@@ -1,0 +1,15 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+PyYAML = "==5.3.1"
+robotframework = "==5.0.1"
+robotframework-seleniumlibrary = "==6.0.0"
+robotframework-screencaplibrary = "==1.6.0"
+
+[dev-packages]
+
+[requires]
+python_full_version = "3.9.9"

@@ -1,14 +1,13 @@
 *** Setting ***
    
-Library    Selenium2Library
+Library    SeleniumLibrary
 
 *** Variables ***
-${BROWSER}	Chrome
+${BROWSER}		Chrome
 ${URL2TEST}	http://the-internet.herokuapp.com/hovers
-${GRID_URL}	http://localhost:9515
 
 *** Test Cases ***
-Sample Robot Test
+Sample Hovers Test
 	[Setup]	Open Browser To Landing Page
 	Highlight Element	figure	5	red
 	Mouse Over	class:figure
@@ -19,7 +18,7 @@ Sample Robot Test
 
 *** Keywords ***
 Open Browser To Landing Page
-	Open Browser	${URL2TEST}	${BROWSER}	remote_url=${GRID_URL}
+	Open Browser	${URL2TEST}	${BROWSER}
 	Title Should Be	The Internet
 
 Highlight Element
