@@ -17,6 +17,11 @@ pipeline {
       steps {
         powershell(script: '$PSVersionTable.PSVersion', returnStdout: true)
         powershell(script: 'C:\\Users\\Administrator\\Documents\\WKI\\agent\\_work\\_tool\\Python\\3.11.1\\x64\\Scripts\\pip.exe install --upgrade pip pipenv', returnStdout: true)
+        pwd()
+        dir(path: 'seleniumthreebindings_main') {
+          powershell(script: 'C:\\Users\\Administrator\\Documents\\WKI\\agent\\_work\\_tool\\Python\\3.11.1\\x64\\Scripts\\pipenv.exe install', returnStdout: true)
+        }
+
       }
     }
 
