@@ -14,6 +14,12 @@ pipeline {
     }
 
     stage('Execute RPA') {
+      agent {
+        node {
+          label 'windows_node'
+        }
+
+      }
       steps {
         powershell(script: '$PSVersionTable.PSVersion', returnStdout: true)
       }
