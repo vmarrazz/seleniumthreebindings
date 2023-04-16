@@ -13,5 +13,11 @@ pipeline {
       }
     }
 
+    stage('Execute RPA') {
+      steps {
+        powershell(script: '$PSVersionTable.PSVersion', returnStdout: true)
+      }
+    }
+
   }
 }
