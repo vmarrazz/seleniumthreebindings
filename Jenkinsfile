@@ -16,7 +16,7 @@ pipeline {
     stage('Execute RPA') {
       steps {
         powershell(script: '$PSVersionTable.PSVersion', returnStdout: true)
-        powershell 'C:\\Users\\Administrator\\Documents\\WKI\\agent\\_work\\_tool\\Python\\3.11.1\\x64\\python.exe --version'
+        powershell 'C:\\Users\\Administrator\\Documents\\WKI\\agent\\_work\\_tool\\Python\\3.11.1\\x64\\python.exe -m install --upgrade pip pipenv'
       }
     }
 
