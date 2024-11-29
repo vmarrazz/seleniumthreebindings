@@ -5,7 +5,7 @@ Metadata	More Info	For more information about *Robot Framework* see http://robot
 Metadata	Executed At	${CURDIR}
 
 # Load Given-When-Then Demo Wrapper
-Resource	./GWTDemoWrapper.robot
+Resource	./GWTWrapper.robot
 
 # default parameters
 # Variables	../resources/parameters.yaml
