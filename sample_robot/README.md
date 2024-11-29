@@ -14,7 +14,7 @@ Enable **python environment**
 
 It based on local python interpreter and robot library, to execute test case use command
 
-> python -m robot -d results test\GWTEsercitazione.robot
+> robot -d results test\GWTEsercitazione.robot
 
 PS to be correctly used install Robot Framework Selenium library in python interpreter (e.g. via pip)
 Moreover before execute test case, launch manually chrome webdriver
